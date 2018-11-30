@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.bmc.dao.ImportMapper">
+
+    <insert id="addUser" parameterType="cn.bmc.pojo.UploadData">
+    insert into bmc_goods
+    (g_id,g_price,s_id,uptime)
+    values
+    (
+    #{g_id},
+    #{g_price},
+    #{s_id},
+    #{uptime}
+    )
+  </insert>
+    <update id="updateUserById" parameterType="cn.bmc.pojo.UploadData">
+        update bmc_goods
+        set
+        g_id=#{g_id},
+        g_price=#{g_price},
+        s_id=#{s_id},
+        uptime=#{uptime}
+        where g_id = #{g_id}
+    </update>
+
+    <select id="selectByID" resultType="java.lang.Integer">
+    SELECT
+    count(*)
+    FROM bmc_goods
+    WHERE g_id=#{g_id}
+  </select>
+</mapper>
